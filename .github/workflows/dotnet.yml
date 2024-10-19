@@ -51,18 +51,16 @@ jobs:
 
     - name: Write Full Coverage Summary
       run: |
-        echo "## Coverage Summary" >> $GITHUB_STEP_SUMMARY
+        echo "# Coverage Summary" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         
         # Append ReportGenerator's Markdown summary to the GitHub summary
         cat ./new-coverage-report/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         
-        echo "## Delta Coverage Report" >> $GITHUB_STEP_SUMMARY
+        echo "# Delta Coverage Report" >> $GITHUB_STEP_SUMMARY
         cat ./new-coverage-report/diff-report.md >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        
-        echo "**[Download Full Coverage Report](../artifacts)**" >> $GITHUB_STEP_SUMMARY
 
     - name: Fail if Coverage Delta is Low
       if: ${{ env.coverage-delta-result == 'failed' }}
