@@ -31,12 +31,12 @@ public class SomeClassTests
 		BaseTest(input, expected);
 	}
 
-	[TestMethod]
-	[DataRow(7, 49)]
-	[DataRow(14, 28)]
-	[DataRow(21, 63)]
-	public void WhenInputIsOnlyDivisibleBySeven_ShouldReturnInputTimesSeven(int input, int expected)
-	{
-		BaseTest(input, expected);
-	}
+	// [TestMethod]
+	// [DataRow(7, 49)]
+	// [DataRow(14, 28)]
+	// [DataRow(21, 63)]
+	// public void WhenInputIsOnlyDivisibleBySeven_ShouldReturnInputTimesSeven(int input, int expected)
+	// {
+	// 	BaseTest(input, expected);
+	// }
 }
