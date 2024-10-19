@@ -32,7 +32,7 @@ jobs:
       run: dotnet tool install -g dotnet-reportgenerator-globaltool
 
     - name: Generate Report
-      run: reportgenerator -reports:"./NewResults/**/*.cobertura.xml" -targetdir:"./new-coverage-report" -reporttypes:"Cobertura"
+      run: reportgenerator -reports:"./NewResults/**/*.cobertura.xml" -targetdir:"./new-coverage-report" -reporttypes:"Cobertura;MarkdownSummaryGithub;HtmlSummary"
 
     - name: Install diff-cover
       run: pip install diff-cover
@@ -44,4 +44,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: coverage-report
-        path: ./new-coverage-report/Cobertura.xml
+        path: ./new-coverage-report/
+
+    - name: Write to Step Summary
+      run: cat ./new-coverage-report/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
