@@ -1,0 +1,7 @@
+﻿<Solution>
+  <Folder Name="/_SolutionItems/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="ClassLibTests\ClassLibTests.csproj" Type="Classic C#" />
+  <Project Path="ClassLib\ClassLib.csproj" Type="Classic C#" />
+</Solution>
