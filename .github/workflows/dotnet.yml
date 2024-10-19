@@ -59,7 +59,7 @@ jobs:
         cat ./new-coverage-report/diff-report.md >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         
-        echo "**[Download Full Coverage Report](./coverage-report/index.html)**" >> $GITHUB_STEP_SUMMARY
+        echo "**[Download Full Coverage Report](../artifacts)**" >> $GITHUB_STEP_SUMMARY
 
     - name: Fail if Coverage Delta is Low
       if: ${{ env.coverage-delta-result == 'failed' }}
