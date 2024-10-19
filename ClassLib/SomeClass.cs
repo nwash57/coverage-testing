@@ -19,6 +19,11 @@ public class SomeClass : ISomeClass
 			return input * 5;
 		}
 
+		if (input % 7 == 0)
+		{
+			return input * 7;
+		}
+
 		return input;
 	}
 }
