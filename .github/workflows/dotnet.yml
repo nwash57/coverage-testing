@@ -41,10 +41,26 @@ jobs:
       run: diff-cover --compare-branch origin/main ./new-coverage-report/Cobertura.xml --html-report ./new-coverage-report/diff-report.html --markdown-report ./new-coverage-report/diff-report.md
 
     - name: Upload Coverage Report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: coverage-report
         path: ./new-coverage-report/
 
-    - name: Write to Step Summary
-      run: cat ./new-coverage-report/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
+    - name: Write Full Coverage Summary
+      run: |
+        echo "## Coverage Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        # Append ReportGenerator's Markdown summary to the GitHub summary
+        cat ./coverage-report/Summary.md >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        echo "## Delta Coverage Report" >> $GITHUB_STEP_SUMMARY
+        cat diff-cover-report.md >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        echo "**[Download Full Coverage Report](./coverage-report/index.html)**" >> $GITHUB_STEP_SUMMARY
+
+    - name: Fail if Coverage Delta is Low
+      if: ${{ env.coverage-delta-result == *"failed"* }}
+      run: exit 1
