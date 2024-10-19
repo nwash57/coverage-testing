@@ -21,12 +21,6 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-        
-    - name: Restore dependencies
-      run: dotnet restore coverage-testing.slnx
-      
-    - name: Build
-      run: dotnet build --no-restore coverage-testing.slnx
       
     - name: Test
-      run: dotnet test --no-build --verbosity normal coverage-testing.slnx
+      run: dotnet test --verbosity normal ./ClassLibTests/ClassLibTests.csproj
